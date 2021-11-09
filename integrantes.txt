@@ -1,0 +1,8 @@
+Grupo A
+	Nombre Equipo: Team Joke
+	Integrantes: 
+			Joan Lokreybe Mosquera - Product Owner
+			Johan Andrés Bolaños - Desarrollador
+			José Evelio Cardona - Desarrollador 
+			José Miguel Calderón - Desarrollador
+			Kevin H. Ortiz Dimingo - Scrum Master
