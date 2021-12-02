@@ -62,7 +62,7 @@ public class PersonAdapterRecycler extends RecyclerView.Adapter<PersonViewHolder
         viewHolder.getLastNameTextView().setText(person.getLastName());
         viewHolder.getCellphoneTextView().setText(person.getCellphone() + "");
 
-        ImageView personImageView = viewHolder.getPersonImageView();
+        /**ImageView personImageView = viewHolder.getPersonImageView();
         RelativeLayout personItemLayout = viewHolder.getPersonItemLayout();
         if (position % 2 == 0) {
             personItemLayout.setBackgroundResource(R.color.white); //R.color.white)
@@ -71,7 +71,7 @@ public class PersonAdapterRecycler extends RecyclerView.Adapter<PersonViewHolder
             //personItemLayout.setBackgroundResource(R.color.teal_200);
             personItemLayout.setBackgroundColor(Color.LTGRAY);
             personImageView.setImageDrawable(context.getDrawable(R.drawable.ic_account_circle_white_48dp));
-        }
+        } **/
 
         TextView detailButton = viewHolder.getDetailButton();
         //detailButton.setOnClickListener(View.OnClickListener);

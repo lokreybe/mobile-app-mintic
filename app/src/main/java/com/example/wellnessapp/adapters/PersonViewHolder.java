@@ -15,7 +15,7 @@ import com.example.wellnessapp.model.Person;
 
 public class PersonViewHolder extends RecyclerView.ViewHolder {
 
-    private final ImageView personImageView;
+    //private final ImageView personImageView;
     private final TextView firstNameTextView;
     private final TextView lastNameTextView;
     private final TextView cellphoneTextView;
@@ -28,13 +28,9 @@ public class PersonViewHolder extends RecyclerView.ViewHolder {
         firstNameTextView = (TextView) itemView.findViewById(R.id.firstNameTextView);
         lastNameTextView =  (TextView) itemView.findViewById(R.id.lastNameTextView);
         cellphoneTextView = (TextView) itemView.findViewById(R.id.cellphoneTextView);
-        personImageView = (ImageView) itemView.findViewById(R.id.personImageView);
+        //personImageView = (ImageView) itemView.findViewById(R.id.personImageView);
         personItemLayout = (RelativeLayout) itemView.findViewById(R.id.personItemLayoutRecycler);
         detailButton = (TextView) itemView.findViewById(R.id.detailButton);
-    }
-
-    public ImageView getPersonImageView() {
-        return personImageView;
     }
 
     public TextView getFirstNameTextView() {

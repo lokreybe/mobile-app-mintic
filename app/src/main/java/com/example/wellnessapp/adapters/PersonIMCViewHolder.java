@@ -12,7 +12,7 @@ import com.example.wellnessapp.R;
 
 public class PersonIMCViewHolder extends RecyclerView.ViewHolder {
 
-    private final ImageView personImageView;
+    //private final ImageView personImageView;
     private final TextView heightTextView;
     private final TextView weightTextView;
     private final TextView ageTextView;
@@ -27,14 +27,16 @@ public class PersonIMCViewHolder extends RecyclerView.ViewHolder {
         weightTextView =  (TextView) itemView.findViewById(R.id.weightTextView);
         ageTextView = (TextView) itemView.findViewById(R.id.ageTextView);
         dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
-        personImageView = (ImageView) itemView.findViewById(R.id.personImageView);
+        //personImageView = (ImageView) itemView.findViewById(R.id.personImageView);
         personItemLayout = (RelativeLayout) itemView.findViewById(R.id.personItemLayoutRecycler);
         detailButton = (TextView) itemView.findViewById(R.id.detailButton);
     }
 
+    /**
     public ImageView getPersonImageView() {
         return personImageView;
     }
+    **/
 
     public TextView getHeightTextView() {
         return heightTextView;

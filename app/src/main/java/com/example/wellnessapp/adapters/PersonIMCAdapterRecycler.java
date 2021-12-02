@@ -65,20 +65,28 @@ public class PersonIMCAdapterRecycler extends RecyclerView.Adapter<PersonIMCView
         // Fecha, Edad, Estatura, Peso
 
         viewHolder.getDateTextView().setText(imc.getDate() );
-        viewHolder.getAgeTextView().setText(Byte.toString(imc.getAge()));
+        viewHolder.getAgeTextView().setText(imc.getAge() + " years");
         viewHolder.getHeightTextView().setText(imc.getHeight()+" mts");
         viewHolder.getWeightTextView().setText(imc.getWeight() + " kg");
 
 
-        ImageView personImageView = viewHolder.getPersonImageView();
+        //ImageView personImageView = viewHolder.getPersonImageView();
         RelativeLayout personItemLayout = viewHolder.getPersonItemLayout();
         if (position % 2 == 0) {
             personItemLayout.setBackgroundResource(R.color.white); //R.color.white)
-            personImageView.setImageDrawable(context.getDrawable(R.drawable.ic_account_circle_grey600_48dp));
+            //personImageView.setImageDrawable(context.getDrawable(R.drawable.ic_account_circle_grey600_48dp));
+            viewHolder.getDateTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_calendar_grey600_18dp,0,0,0);
+            viewHolder.getAgeTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_cake_variant_grey600_18dp,0,0,0);
+            viewHolder.getHeightTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_human_male_height_grey600_18dp,0,0,0);
+            viewHolder.getWeightTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_weight_kilogram_grey600_18dp,0,0,0);
         } else {
             //personItemLayout.setBackgroundResource(R.color.teal_200);
             personItemLayout.setBackgroundColor(Color.LTGRAY);
-            personImageView.setImageDrawable(context.getDrawable(R.drawable.ic_account_circle_white_48dp));
+            viewHolder.getDateTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_calendar_white_18dp,0,0,0);
+            viewHolder.getAgeTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_cake_variant_white_18dp,0,0,0);
+            viewHolder.getHeightTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_human_male_height_white_18dp,0,0,0);
+            viewHolder.getWeightTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_weight_kilogram_white_18dp,0,0,0);
+            //personImageView.setImageDrawable(context.getDrawable(R.drawable.ic_account_circle_white_48dp));
         }
 
         TextView detailButton = viewHolder.getDetailButton();
