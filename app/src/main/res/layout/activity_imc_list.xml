@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/green_700">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,8 +17,8 @@
         >
         <ImageView
             android:id="@+id/wellnessAppIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_gravity="center_vertical"
             android:foregroundGravity="center_vertical"
             app:srcCompat="@drawable/ic_account_circle_white_48dp"

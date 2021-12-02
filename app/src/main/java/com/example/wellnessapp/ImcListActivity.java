@@ -1,12 +1,5 @@
 package com.example.wellnessapp;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,29 +8,29 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.wellnessapp.adapters.PersonAdapterRecycler;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.wellnessapp.adapters.PersonIMCAdapterRecycler;
-import com.example.wellnessapp.interfaces.CustomClickListener;
 import com.example.wellnessapp.model.Gender;
 import com.example.wellnessapp.model.Person;
 import com.example.wellnessapp.model.PersonIMC;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 
 public class ImcListActivity extends AppCompatActivity {
 
     private long cellphone;
-    private TextView firstNameTextView;
-    private TextView lastNameTextView;
-    private TextView cellphoneTextView;
 
-    private ActivityResultLauncher<String> requestPermissionCall =
+    private final ActivityResultLauncher<String> requestPermissionCall =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
                     callContact();
@@ -55,29 +48,26 @@ public class ImcListActivity extends AppCompatActivity {
         Person mySelf = loadPerson();
 
         // Seteamos los datos básicos de la persona en la vista
-        firstNameTextView = (TextView) this.findViewById(R.id.firstNameTextView);
+        TextView firstNameTextView = this.findViewById(R.id.firstNameTextView);
         firstNameTextView.setText(mySelf.getFirstName());
 
-        lastNameTextView = (TextView) this.findViewById(R.id.lastNameTextView);
+        TextView lastNameTextView = this.findViewById(R.id.lastNameTextView);
         lastNameTextView.setText(mySelf.getLastName());
 
-        cellphoneTextView = (TextView) this.findViewById(R.id.cellphoneTextView);
+        TextView cellphoneTextView = this.findViewById(R.id.cellphoneTextView);
         cellphoneTextView.setText(Long.toString(mySelf.getCellphone()));
 
 
         // Llenamos el RecyclerView de los registros de IMC que tiene el usuario
         PersonIMCAdapterRecycler personIMCListAdapter = new PersonIMCAdapterRecycler( this,
-                R.layout.person_imc_view_item, mySelf,
-                new CustomClickListener() {
-                    @Override
-                    public void onClick(long cellphone) {
-                        ImcListActivity.this.cellphone = cellphone;
-                        callContact();
-                    }
+                R.layout.person_imc_card_view_item, mySelf,
+                cellphone -> {
+                    ImcListActivity.this.cellphone = cellphone;
+                    callContact();
                 }
         );
 
-        RecyclerView imcList = (RecyclerView) findViewById(R.id.recyclerViewNames);
+        RecyclerView imcList = findViewById(R.id.recyclerViewNames);
         imcList.setAdapter(personIMCListAdapter);
         imcList.setLayoutManager(new LinearLayoutManager(this));
         imcList.setHasFixedSize(true);
@@ -88,7 +78,8 @@ public class ImcListActivity extends AppCompatActivity {
     }
 
     private ArrayList<Person> loadContacts() {
-        ArrayList<Person> personsList = new ArrayList<Person>(Arrays.asList(
+
+        return new ArrayList<>(Arrays.asList(
                 new Person("Joan", "Mosquera", 3162785797L, Gender.male, loadImcs()),
                 new Person("Pedro", "Jimenez", 3205137502L, Gender.male, loadImcs()),
                 new Person("Jose", "Montilla", 3195759860L, Gender.male, loadImcs()),
@@ -123,8 +114,6 @@ public class ImcListActivity extends AppCompatActivity {
                 new Person("Diana", "Monterrosa", 3121234561L, Gender.female, loadImcs()),
                 new Person("Maria", "Zapata", 3155967502L, Gender.female, loadImcs())
         ));
-
-        return personsList;
     }
 
     private Date getDate(String dateString) {
@@ -141,32 +130,28 @@ public class ImcListActivity extends AppCompatActivity {
     private ArrayList<PersonIMC> loadImcs() {
         // DateFormat cal = DateFormat.getInstance();
         // SimpleDateFormat  formatter = new SimpleDateFormat("dd/MM/yyyy");
-        ArrayList<PersonIMC> personsList = new ArrayList<PersonIMC>(Arrays.asList(
-                new PersonIMC("30/11/2005", (byte)16, (float)1.60, 50),
-                new PersonIMC("30/11/2006", (byte)17, (float)1.62,52),
-                new PersonIMC("30/11/2007", (byte)18, (float)1.64,54),
-                new PersonIMC("30/11/2008", (byte)19, (float)1.66,56),
-                new PersonIMC("30/11/2009", (byte)20, (float)1.68,58),
-                new PersonIMC("30/11/2010", (byte)21, (float)1.70,60),
-                new PersonIMC("30/11/2011", (byte)22, (float)1.72,62),
-                new PersonIMC("30/11/2012", (byte)23, (float)1.74,64),
-                new PersonIMC("30/11/2013", (byte)24, (float)1.76,66),
-                new PersonIMC("30/11/2014", (byte)25, (float)1.78,68),
-                new PersonIMC("30/11/2015", (byte)26, (float)1.80,70),
-                new PersonIMC("30/11/2016", (byte)27, (float)1.82,72),
-                new PersonIMC("30/11/2017", (byte)28, (float)1.84,74),
-                new PersonIMC("30/11/2018", (byte)29, (float)1.85,76),
-                new PersonIMC("30/11/2019", (byte)30, (float)1.85,78)
+        return new ArrayList<>(Arrays.asList(
+                new PersonIMC("30/11/2005", (byte) 16, (float) 1.60, 50),
+                new PersonIMC("30/11/2006", (byte) 17, (float) 1.62, 52),
+                new PersonIMC("30/11/2007", (byte) 18, (float) 1.64, 54),
+                new PersonIMC("30/11/2008", (byte) 19, (float) 1.66, 56),
+                new PersonIMC("30/11/2009", (byte) 20, (float) 1.68, 58),
+                new PersonIMC("30/11/2010", (byte) 21, (float) 1.70, 60),
+                new PersonIMC("30/11/2011", (byte) 22, (float) 1.72, 62),
+                new PersonIMC("30/11/2012", (byte) 23, (float) 1.74, 64),
+                new PersonIMC("30/11/2013", (byte) 24, (float) 1.76, 66),
+                new PersonIMC("30/11/2014", (byte) 25, (float) 1.78, 68),
+                new PersonIMC("30/11/2015", (byte) 26, (float) 1.80, 70),
+                new PersonIMC("30/11/2016", (byte) 27, (float) 1.82, 72),
+                new PersonIMC("30/11/2017", (byte) 28, (float) 1.84, 74),
+                new PersonIMC("30/11/2018", (byte) 29, (float) 1.85, 76),
+                new PersonIMC("30/11/2019", (byte) 30, (float) 1.85, 78)
         ));
-        return personsList;
     }
 
     private boolean checkCallingPermission () {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) ==
-                PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        return false;
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) ==
+                PackageManager.PERMISSION_GRANTED;
     }
 
     private void callContact() {

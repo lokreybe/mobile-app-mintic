@@ -71,7 +71,7 @@ public class PersonIMCAdapterRecycler extends RecyclerView.Adapter<PersonIMCView
 
 
         //ImageView personImageView = viewHolder.getPersonImageView();
-        RelativeLayout personItemLayout = viewHolder.getPersonItemLayout();
+        /** RelativeLayout personItemLayout = viewHolder.getPersonItemLayout();
         if (position % 2 == 0) {
             personItemLayout.setBackgroundResource(R.color.white); //R.color.white)
             //personImageView.setImageDrawable(context.getDrawable(R.drawable.ic_account_circle_grey600_48dp));
@@ -87,7 +87,7 @@ public class PersonIMCAdapterRecycler extends RecyclerView.Adapter<PersonIMCView
             viewHolder.getHeightTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_human_male_height_white_18dp,0,0,0);
             viewHolder.getWeightTextView().setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_weight_kilogram_white_18dp,0,0,0);
             //personImageView.setImageDrawable(context.getDrawable(R.drawable.ic_account_circle_white_48dp));
-        }
+        } */
 
         TextView detailButton = viewHolder.getDetailButton();
         detailButton.setOnClickListener(new View.OnClickListener() {

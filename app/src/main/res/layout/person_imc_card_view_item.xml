@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/personItemLayoutRecycler"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="3dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardMaxElevation="6dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        >
+
+        <LinearLayout
+            android:id="@+id/personData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignWithParentIfMissing="true"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/date"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:drawableStart="@drawable/ic_calendar_grey600_18dp"
+                android:drawablePadding="6dp"/>
+
+            <TextView
+                android:id="@+id/ageTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/age"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:drawableStart="@drawable/ic_cake_variant_grey600_18dp"
+                android:drawablePadding="6dp"/>
+
+            <TextView
+                android:id="@+id/heightTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:maxLines="1"
+                android:text="@string/height"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:drawableStart="@drawable/ic_human_male_height_grey600_18dp"
+                android:drawablePadding="6dp"/>
+
+            <TextView
+                android:id="@+id/weightTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:maxLines="1"
+                android:text="@string/weight"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:drawableStart="@drawable/ic_weight_kilogram_grey600_18dp"
+                android:drawablePadding="6dp"/>
+
+            <TextView
+                android:id="@+id/detailButton"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="6dp"
+                android:clickable="true"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="@string/see_detail"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:drawableStart="@drawable/ic_eye_grey600_18dp"
+                android:drawablePadding="6dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
