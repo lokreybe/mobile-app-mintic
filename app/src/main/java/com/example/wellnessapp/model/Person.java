@@ -1,5 +1,7 @@
 package com.example.wellnessapp.model;
 
+import java.util.ArrayList;
+
 public class Person {
     String firstName;
     String lastName;
@@ -8,6 +10,7 @@ public class Person {
     float height;
     float weight;
     Gender gender;
+    ArrayList<PersonIMC> imcs;
 
     public Person() {
     }
@@ -21,6 +24,21 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.cellphone = cellphone;
+    }
+
+    public Person(String firstName, String lastName, long cellphone, Gender gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cellphone = cellphone;
+        this.gender = gender;
+    }
+
+    public Person(String firstName, String lastName, long cellphone, Gender gender, ArrayList<PersonIMC> imcs) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cellphone = cellphone;
+        this.gender = gender;
+        this.imcs = imcs;
     }
 
     public String getFirstName() {
@@ -77,6 +95,14 @@ public class Person {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public ArrayList<PersonIMC> getImcs() {
+        return imcs;
+    }
+
+    public void setImcs(ArrayList<PersonIMC> imcs) {
+        this.imcs = imcs;
     }
 
     public float imc() {
