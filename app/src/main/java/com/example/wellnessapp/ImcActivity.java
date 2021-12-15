@@ -16,14 +16,15 @@ import android.widget.Toast;
 
 import com.example.wellnessapp.model.Gender;
 import com.example.wellnessapp.model.Person;
+import com.example.wellnessapp.model.PersonIMC;
 
 public class ImcActivity extends AppCompatActivity {
 
     Person person;
+    PersonIMC imc;
     EditText firstName;
     EditText lastName;
     EditText age;
-    //EditText gender;
     EditText height;
     EditText weight ;
     Button calculate;
@@ -35,6 +36,7 @@ public class ImcActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imc);
         person = new Person();
+        imc = new PersonIMC();
 
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
@@ -111,17 +113,20 @@ public class ImcActivity extends AppCompatActivity {
 
         person.setFirstName(firstName.getText().toString());
         person.setLastName(lastName.getText().toString());
-        person.setAge(Byte.parseByte(age.getText().toString()));
-        person.setHeight(Float.parseFloat(height.getText().toString()));
-        person.setWeight(Float.parseFloat(weight.getText().toString()));
+
+        imc.setAge(Byte.parseByte(age.getText().toString()));
+        imc.setHeight(Float.parseFloat(height.getText().toString()));
+        imc.setWeight(Float.parseFloat(weight.getText().toString()));
+
+        person.addImc(imc);
 
         //person.setGender(lastName.getText().toString());
 
-        Toast t = Toast.makeText(this, "The imc is: "+person.imc(), Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(this, "The imc is: "+imc.imc(), Toast.LENGTH_SHORT);
         t.show();
 
-        resultImc.setText("The imc is : "+person.imc());
-        resultMb.setText("The mb is : "+person.mb());
+        resultImc.setText("The imc is : "+imc.imc());
+        resultMb.setText("The mb is : "+imc.mb(person.getGender()));
         resultImc.setVisibility(VISIBLE);
         resultMb.setVisibility(VISIBLE);
     }

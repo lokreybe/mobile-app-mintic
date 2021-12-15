@@ -22,4 +22,7 @@
     <string name="cellphone">Cellphone</string>
     <string name="see_detail">See Detail</string>
     <string name="calculate">Calculate</string>
+    <string name="personList">Person List</string>
+    <string name="search">Search</string>
+    <string name="view_data">View Data</string>
 </resources>

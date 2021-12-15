@@ -1,18 +1,25 @@
 package com.example.wellnessapp.model;
 
-import java.util.ArrayList;
+import com.google.firebase.firestore.Exclude;
+import com.google.firebase.firestore.IgnoreExtraProperties;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+@IgnoreExtraProperties
 public class Person {
+    Long id;
     String firstName;
     String lastName;
-    long cellphone;
-    byte age;
-    float height;
-    float weight;
+    String email;
+    Role role;
     Gender gender;
+    long cellphone;
+
     ArrayList<PersonIMC> imcs;
 
     public Person() {
+        // Default constructor required for calls to DataSnapshot.getValue(Person.class)
     }
 
     public Person(String firstName, String lastName) {
@@ -41,6 +48,34 @@ public class Person {
         this.imcs = imcs;
     }
 
+    public Person(String firstName, String lastName, String email, long cellphone, Gender gender, ArrayList<PersonIMC> imcs) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.cellphone = cellphone;
+        this.gender = gender;
+        this.imcs = imcs;
+    }
+
+    public Person(String firstName, String lastName,  long cellphone, Gender gender, String email, Role role, ArrayList<PersonIMC> imcs) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.role = role;
+        this.gender = gender;
+        this.cellphone = cellphone;
+        this.imcs = imcs;
+    }
+
+    @Exclude
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -65,30 +100,6 @@ public class Person {
         this.cellphone = cellphone;
     }
 
-    public byte getAge() {
-        return age;
-    }
-
-    public void setAge(byte age) {
-        this.age = age;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public void setHeight(float height) {
-        this.height = height;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-
     public Gender getGender() {
         return gender;
     }
@@ -97,29 +108,47 @@ public class Person {
         this.gender = gender;
     }
 
+    @Exclude
     public ArrayList<PersonIMC> getImcs() {
         return imcs;
     }
 
+    @Exclude
     public void setImcs(ArrayList<PersonIMC> imcs) {
         this.imcs = imcs;
     }
 
-    public float imc() {
-        float imc = (float) (this.weight / Math.pow(this.height, 2));
-        return imc;
+    @Exclude
+    public void addImc(PersonIMC imc) {
+        this.imcs.add(imc);
     }
 
-    public float mb() {
-        float mb = 0;
-        if(gender == Gender.male) {
-            mb = (float) ((10 * this.weight) + (6.25 * this.height*100) - (5*this.age) + 5);
-        }
-        if(gender == Gender.female) {
-            mb = (float) ((10 * this.weight) + (6.25 * this.height*100) - (5*this.age) - 161);
-        }
-        return mb;
+    public String getEmail() {
+        return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public HashMap<String, Object> getMap() {
+        HashMap<String, Object> resultMap = new HashMap<>();
+        resultMap.put("firstName", getFirstName());
+        resultMap.put("lastName", getLastName());
+        resultMap.put("gender", getGender());
+        resultMap.put("cellphone", getCellphone());
+        resultMap.put("email", getMap());
+        resultMap.put("role", getRole());
+
+        return resultMap;
+    }
 }
 

@@ -1,6 +1,8 @@
 package com.example.wellnessapp.model;
 
 
+import com.google.firebase.firestore.Exclude;
+
 public class PersonIMC {
     String date;
     byte age;
@@ -49,11 +51,13 @@ public class PersonIMC {
         this.weight = weight;
     }
 
+    @Exclude
     public float imc() {
         float imc = (float) (this.weight / Math.pow(this.height, 2));
         return imc;
     }
 
+    @Exclude
     public float mb(Gender gender) {
         float mb = 0;
         if(gender == Gender.male) {
